@@ -145,3 +145,92 @@ If we want to find a product with description field === "Really good quality":
 
 We're not forced by MongoDB to adhere to a specific schema, but having data structured a certain way makes rendering a view easier (given we know how the data is supposed to look, what data we can use).
 
+###### Data Types - An Overview
+    Text => "Ben"
+    Booleans => true/false
+    Numbers => int32 (integer), int64 (numberLong), numberDecimal
+    ObjectId s
+    Dates => ISODate, Timestamp
+    Embedded documents => objects
+    Arrays
+
+###### Data Structures & Data Modelling
+
+Some considerations:
+
+- What data does my app generate or need? (User info, orders)
+- Where do I need my data? (Welcome page, products list page)
+- Which kind of data do I want to display i.e. what queries do I need to write?
+- How often do I fetch the data? Do I need to optimize?
+- How often do I need to read/write data?
+
+###### Relations Options
+
+Nested/Embedded Documents:
+
+    {
+      userName: "Ben",
+      age: 30,
+      address: {
+        street: "Some Street 11,
+        city: "Singapore
+      }
+    }
+
+References: 
+
+    {
+      userName: "Ben",
+      faveBooks: [{
+        id: 1,
+        name: "Blink"
+      }, {
+        id: 2,
+        name: "Outliers"
+      }]
+    }
+
+OR:
+
+    {
+      userName: "Ben",
+      faveBooks: ["id1", "id2"]
+    }
+
+    // Then in books collection:
+
+    {
+      _id: "id1",
+      name: "Blink"
+    }
+
+An example: 
+    db.diseases.insertOne({
+      _id: 1,
+      diseases: ["sinus", "torn ACL"]
+    })
+
+    db.patients.insertOne({
+      name: "Ben",
+      age: 30,
+      diseaseSummaryID: 1
+    })
+
+    let benDiseaseSummaryID = db.patients.findOne({name:"Ben"}).diseaseSummaryID
+
+    db.diseases.findOne({_id: benDiseaseSummaryID})
+
+    // returns { "_id" : 1, "diseases" : [ "sinus", "torn ACL" ] }
+
+HOWEVER. Since this is a 1-1 relationship, meaning one patient will always only have one summary, and one summary will only belong to one patient, embedding might be a better option.
+
+    db.patients.insertOne({
+      name: "Ben",
+      age: 30,
+      diseaseSummary: {
+        diseases: ["sinus", "torn ACL"]
+      }
+    })
+
+
+
