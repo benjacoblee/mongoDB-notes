@@ -342,8 +342,11 @@ We need to use .aggregate to group values from multiple documents together. Aggr
 Lookup takes an object. Four fields are required:
 
 from - Which document do I want to get data from? In this case, we're calling aggregate on books. So we want to get data from authors.
+
 localField - We have an array called "authors" that contains author objectIDs. 
+
 foreignField - We want to reference objectIDs in the authors collection
+
 as - Some output field
 
     db.books.aggregate([{
