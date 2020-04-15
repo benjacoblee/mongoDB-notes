@@ -149,7 +149,7 @@ We're not forced by MongoDB to adhere to a specific schema, but having data stru
     Text => "Ben"
     Booleans => true/false
     Numbers => int32 (integer), int64 (numberLong), numberDecimal
-    ObjectId s
+    ObjectIds
     Dates => ISODate, Timestamp
     Embedded documents => objects
     Arrays
