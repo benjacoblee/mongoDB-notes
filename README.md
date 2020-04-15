@@ -11,7 +11,7 @@ MongoDB is a "schema-less" data solution. Stores documents in JSON format, saved
 
 ### CRUD Operations
 
-CREATE
+###### Create
 
     db.products.insertOne(
       {
@@ -30,7 +30,7 @@ CREATE
       details: "Very good computer"
     }])
 
-READ
+###### Read
 
     db.products.find({
       name: "A T-shirt" // filter. Finds all entries with name === "A T-shirt"
@@ -47,7 +47,7 @@ The filter can take in multiple arguments:
       name: "A T-shirt"
     }) // .findOne returns the FIRST entry it finds, regardless if there are other entries that fulfill the requirements
 
-UPDATE
+###### Update
 
     db.products.updateOne({ // updates the first document it finds
       name: "A T-shirt" // first argument is the filter
@@ -86,7 +86,7 @@ We can replace a product altogether:
       name: "A T-shirt"
     }, {}) // second argument being what we want to replace the existing document with. In this case, replaces entry with an empty object instead
 
-DELETE
+###### Delete
 
     db.products.deleteOne({
       name: "A T-shirt" // deletes the first entry with name === "A T-shirt"
@@ -94,7 +94,7 @@ DELETE
 
     db.products.deleteMany({}) // if no filter is provided, deletes everything
 
-QUERY AND PROJECTION OPERATORS
+###### Query and Projection Operators
 
 We can use projection operators to narrow down our search. For example, perhaps we want to find products that are >= $1. We can do that with projection operators:
 
@@ -106,7 +106,7 @@ If we want to omit certain fields for optimization:
 
     db.products.find({name:"A T-shirt"}, {name: 1, _id: 0}) // Returns name only
 
-ACCESSING EMBEDDED DOCUMENTS
+###### Accessing Embedded Documents
 
 Say, for example, we had a document that looked like this:
 
@@ -166,7 +166,7 @@ Some considerations:
 
 ### Relations Options
 
-Nested/Embedded Documents:
+###### Nested/Embedded Documents:
 
     {
       userName: "Ben",
@@ -177,7 +177,7 @@ Nested/Embedded Documents:
       }
     }
 
-References: 
+###### References: 
 
     {
       userName: "Ben",
@@ -190,7 +190,7 @@ References:
       }]
     }
 
-OR:
+###### OR:
 
     {
       userName: "Ben",
@@ -204,7 +204,7 @@ OR:
       name: "Blink"
     }
 
-An example: 
+###### An example: 
 
     db.diseases.insertOne({
       _id: 1,
