@@ -135,5 +135,13 @@ If we want to find a product with description field === "Really good quality":
     db.products.find({"details.description": "Really good quality"})
     // Note: If we use dot notation, we must wrap the key in double quotes!
 
+###### How to structure data
 
+- Schemas
+- Relations
+- Validations
+
+###### Why use schemas?
+
+We're not forced by MongoDB to adhere to a specific schema, but having data structured a certain way makes rendering a view easier (given we know how the data is supposed to look, what data we can use).
 
