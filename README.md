@@ -205,6 +205,7 @@ OR:
     }
 
 An example: 
+
     db.diseases.insertOne({
       _id: 1,
       diseases: ["sinus", "torn ACL"]
