@@ -357,5 +357,5 @@ as => Some output field
 
 ###### Schema Validation
 
-We need to create a collection explicity to have schema validation. 
+We need to create a collection explicity to have schema validation. See validation.js 
 
