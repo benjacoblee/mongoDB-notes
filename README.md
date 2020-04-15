@@ -5,7 +5,7 @@ MongoDB is a "schema-less" data solution. Stores documents in JSON format, saved
 ###### Basic Shell Commands
 
     show dbs (shows all databases)
-    use products // a currently connected DB, or implicitly creates one after document insertion
+    use products // connects to DB, or implicitly creates one after document insertion
     db.products.insertOne({name: "A T-shirt"}) 
     db.products.find() // returns all products since no filter
 
