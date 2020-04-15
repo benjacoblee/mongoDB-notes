@@ -2,7 +2,7 @@
 
 MongoDB is a "schema-less" data solution. Stores documents in JSON format, saved as BSON on the server (binary).
 
-###### Basic Shell Commands
+### Basic Shell Commands
 
     show dbs (shows all databases)
     use products // connects to DB, or implicitly creates one after document insertion
