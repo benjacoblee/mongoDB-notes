@@ -172,7 +172,7 @@ Some considerations:
       userName: "Ben",
       age: 30,
       address: {
-        street: "Some Street 11,
+        street: "Some Street 11",
         city: "Singapore
       }
     }
