@@ -206,7 +206,7 @@ Some considerations:
 
 ###### An example: 
 
-    db.diseases.insertOne({
+    db.diseaseSummaries.insertOne({
       _id: 1,
       diseases: ["sinus", "torn ACL"]
     })
@@ -219,11 +219,11 @@ Some considerations:
 
     let benDiseaseSummaryID = db.patients.findOne({name:"Ben"}).diseaseSummaryID
 
-    db.diseases.findOne({_id: benDiseaseSummaryID})
+    db.diseaseSummaries.findOne({_id: benDiseaseSummaryID})
 
     // returns { "_id" : 1, "diseases" : [ "sinus", "torn ACL" ] }
 
-HOWEVER. Since this is a 1-1 relationship, meaning one patient will always only have one summary, and one summary will only belong to one patient, embedding might be a better option.
+HOWEVER. This is a 1-1 relationship, meaning one patient will always only have one summary, and one summary will only belong to one patient, embedding might be a better option.
 
     db.patients.insertOne({
       name: "Ben",
