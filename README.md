@@ -354,3 +354,8 @@ as => Some output field
         as: "creators"
       }
     }])
+
+###### Schema Validation
+
+We need to create a collection explicity to have schema validation. 
+
