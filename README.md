@@ -204,7 +204,7 @@ Some considerations:
       name: "Blink"
     }
 
-###### An example: 
+###### An example of 1-1: 
 
     db.diseaseSummaries.insertOne({
       _id: 1,
@@ -233,5 +233,124 @@ HOWEVER. This is a 1-1 relationship, meaning one patient will always only have o
       }
     })
 
+HOWEVER. If we don't need to fetch disease summaries very often / we're more concerned about the patient info, we can use references instead. 
 
+###### 1-M:
 
+We can use embedding for 1-M:
+
+    {
+        "_id" : ObjectId("5e96bfdfa266d47f98d63ad6"),
+        "question" : "Why does that work?",
+        "answers" : [
+                {
+                        "text" : "It just does lol"
+                },
+                {
+                        "text" : "You're so wrong"
+                }
+        ]
+    }
+
+Depending on the scenario or use case, we might not be concerned about making the relation between documents. For example, a city has many citizens, a citizen belongs to a city.
+However, embedding citizen documents into the city might cause bloat. In that case, we can have a separate collection for citizens, and reference the city they're from.
+
+    db.cities.insertOne({
+      name: "Malaysia",
+      coordinates: {
+        lat: 1,
+        long: -1
+      }
+    })
+
+    db.citizens.insertOne({
+      name: "Ginny",
+      cityID: ObjectId("5e96bea7a266d47f98d63ad3"  
+    })
+      
+    gnyCityID = db.citizens.findOne({name:"Ginny"}).cityID
+
+    db.cities.find({_id: gnyCityID})
+
+###### M-M Embedded
+
+Customers and products:
+
+    db.customers.update({
+      name: "Ben"
+    }, {
+      $set: {
+        orders: [{
+          title: "A book",
+          price: 12.99,
+          quantity: 2
+        }]
+      }
+    })
+
+Note that the example above doesn't really reference anything else. Depending on the use case, we might not need to constantly update "orders" based on if products change. In fact, after a customer has created an order, we shouldn't be changing the price of the order based on the product's price increase.
+
+###### M-M References
+
+    db.authors.insertMany([{
+      name: "Ben",
+      age: 30,
+      address: {
+        street: "Some street"
+      }
+    }, {
+      name: "Gny",
+      age: 29,
+      address: {
+        street: "Some other street"
+      }
+    }])
+
+    db.books.updateOne({}, {
+      $set: {
+        {
+          authors: [
+            ObjectId("5e96c746a266d47f98d63ae0"),
+            ObjectId("5e96c746a266d47f98d63ae1")
+            ]
+        }
+      }
+    })
+
+###### Relations - Options
+
+Nested/Embedded Documents:
+
+    Group data together logically
+    Great for data that belongs together
+    Avoid super-deep nesting
+
+References
+    
+    Split data across collections
+    Great for related data but shared data as well
+    Can overcome limitations of file-size 
+
+###### Joining with $lookup
+
+We need to use .aggregate to group values from multiple documents together. Aggregate takes an array as an argument:
+
+    db.books.aggregate([{
+      $lookup: 
+    }])
+
+Lookup takes an object. Four fields are required:
+
+from => Which document do I want to get data from? In this case, we're calling aggregate on books. So we want to get data from authors.
+localField => We have an array called "authors" that contains author objectIDs. 
+foreignField => We want to reference objectIDs in the authors collection
+as => Some output field
+
+    db.books.aggregate([{
+      $lookup: {
+        from: "authors", // document we want to join to books
+        localField: "authors", // array of objectIDs
+        foreignField: "_id", // objectID in author document
+        as: "creators"
+      }
+    }])
