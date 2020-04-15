@@ -268,7 +268,7 @@ However, embedding citizen documents into the city might cause bloat. In that ca
       cityID: ObjectId("5e96bea7a266d47f98d63ad3"  
     })
       
-    gnyCityID = db.citizens.findOne({name:"Ginny"}).cityID
+    let gnyCityID = db.citizens.findOne({name:"Ginny"}).cityID
 
     db.cities.find({_id: gnyCityID})
 
