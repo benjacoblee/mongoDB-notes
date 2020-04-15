@@ -223,7 +223,7 @@ Some considerations:
 
     // returns { "_id" : 1, "diseases" : [ "sinus", "torn ACL" ] }
 
-HOWEVER. This is a 1-1 relationship, meaning one patient will always only have one summary, and one summary will only belong to one patient, embedding might be a better option.
+This is a 1-1 relationship, meaning one patient will always only have one summary, and one summary will only belong to one patient. Thus, embedding might be a better option.
 
     db.patients.insertOne({
       name: "Ben",
@@ -233,7 +233,7 @@ HOWEVER. This is a 1-1 relationship, meaning one patient will always only have o
       }
     })
 
-HOWEVER. If we don't need to fetch disease summaries very often / we're more concerned about the patient info, we can use references instead. 
+If we don't need to fetch disease summaries very often / we're more concerned about the patient info, we can use references instead. 
 
 ###### 1-M:
 
