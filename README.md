@@ -1,4 +1,6 @@
-* [Table of Contents](#table-of-contents)
+Table of Contents
+=================
+
    * [MongoDB Notes](#mongodb-notes)
          * [Basic Shell Commands](#basic-shell-commands)
          * [CRUD Operations](#crud-operations)
@@ -25,6 +27,7 @@
                   * [Schema Validation](#schema-validation)
          * [More About Create Operations](#more-about-create-operations)
                   * [Ordered Inserts](#ordered-inserts)
+                  * [Importing Data](#importing-data)
 
 # MongoDB Notes
 
@@ -427,6 +430,20 @@ We can change the default behavior of our write operation by using configs. inse
     })    
 
 This will then let us insert the last document.
+
+###### Importing Data
+
+We run mongoimport from the CLI, not the mongo shell
+
+    mongoimport tv-shows.json -d movieData -c movies --jsonArray --drop
+
+-d Specifies the name of the database
+-c Specifies the name of the collection
+--jsonArray accepts a single array with mongoDB documents
+--drop to drop the collection before importing (if not specified, would append to the current collection)
+
+
+
 
 
 
