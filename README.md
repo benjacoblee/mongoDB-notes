@@ -1,3 +1,31 @@
+Table of Contents
+=================
+
+   * [MongoDB Notes](#mongodb-notes)
+         * [Basic Shell Commands](#basic-shell-commands)
+         * [CRUD Operations](#crud-operations)
+                  * [Create](#create)
+                  * [Read](#read)
+                  * [Update](#update)
+                  * [Delete](#delete)
+                  * [Query and Projection Operators](#query-and-projection-operators)
+                  * [Accessing Embedded Documents](#accessing-embedded-documents)
+         * [How to structure data](#how-to-structure-data)
+         * [Why use schemas?](#why-use-schemas)
+         * [Data Types - An Overview](#data-types---an-overview)
+         * [Data Structures &amp; Data Modelling](#data-structures--data-modelling)
+         * [Relations Options](#relations-options)
+                  * [Nested/Embedded Documents:](#nestedembedded-documents)
+                  * [References:](#references)
+                  * [OR:](#or)
+                  * [An example of 1-1:](#an-example-of-1-1)
+                  * [1-M:](#1-m)
+                  * [M-M Embedded](#m-m-embedded)
+                  * [M-M References](#m-m-references)
+                  * [Relations - Options](#relations---options)
+                  * [Joining with $lookup](#joining-with-lookup)
+                  * [Schema Validation](#schema-validation)
+
 # MongoDB Notes
 
 MongoDB is a "schema-less" data solution. Stores documents in JSON format, saved as BSON on the server (binary).
