@@ -1,9 +1,9 @@
 Table of Contents
 =================
-
-   [MongoDB Notes](#mongodb-notes)
-   [Basic Shell Commands](#basic-shell-commands)
-   [CRUD Operations](#crud-operations)
+   
+   * [MongoDB Notes](#mongodb-notes)
+         * [Basic Shell Commands](#basic-shell-commands)
+         * [CRUD Operations](#crud-operations)
                   * [Create](#create)
                   * [Read](#read)
                   * [Update](#update)
