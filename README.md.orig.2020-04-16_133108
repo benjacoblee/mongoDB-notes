@@ -1,5 +1,9 @@
-* [Table of Contents](#table-of-contents)
-   * [MongoDB Notes](#mongodb-notes)
+<!--ts-->
+
+Table of Contents
+=================
+   
+   [MongoDB Notes](#mongodb-notes)
          * [Basic Shell Commands](#basic-shell-commands)
          * [CRUD Operations](#crud-operations)
                   * [Create](#create)
@@ -23,8 +27,6 @@
                   * [Relations - Options](#relations---options)
                   * [Joining with $lookup](#joining-with-lookup)
                   * [Schema Validation](#schema-validation)
-         * [More About Create Operations](#more-about-create-operations)
-                  * [Ordered Inserts](#ordered-inserts)
 
 # MongoDB Notes
 
@@ -428,7 +430,7 @@ We can change the default behavior of our write operation by using configs. inse
 
 This will then let us insert the last document.
 
-
+<!--te-->
 
 
   
